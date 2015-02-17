@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C26B75B61A93BA23003A7431 /* Dict2ModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B75B51A93BA23003A7431 /* Dict2ModelTest.swift */; };
+		C2E25FAF1A92F3B20045B7D1 /* SwiftDictModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C2E25FAE1A92F3B20045B7D1 /* SwiftDictModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2E25FB51A92F3B20045B7D1 /* SwiftDictModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2E25FA91A92F3B20045B7D1 /* SwiftDictModel.framework */; };
+		C2E25FBC1A92F3B20045B7D1 /* SwiftDictModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E25FBB1A92F3B20045B7D1 /* SwiftDictModelTests.swift */; };
+		C2E25FC61A92F3C70045B7D1 /* SwiftDictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E25FC51A92F3C70045B7D1 /* SwiftDictModel.swift */; };
+		C2E25FC81A92FC920045B7D1 /* SwiftDictModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E25FC51A92F3C70045B7D1 /* SwiftDictModel.swift */; };
+		C2E25FCB1A9300650045B7D1 /* ModelInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = C2E25FCA1A9300650045B7D1 /* ModelInfo.json */; };
+		C2E25FCD1A9301ED0045B7D1 /* Error.json in Resources */ = {isa = PBXBuildFile; fileRef = C2E25FCC1A9301ED0045B7D1 /* Error.json */; };
+		C2E25FD01A9307BE0045B7D1 /* ModelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E25FCF1A9307BE0045B7D1 /* ModelInfo.swift */; };
+		C2E25FD21A9308C10045B7D1 /* ModelInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E25FD11A9308C10045B7D1 /* ModelInfoTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C2E25FB61A92F3B20045B7D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C2E25FA01A92F3B20045B7D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2E25FA81A92F3B20045B7D1;
+			remoteInfo = SwiftDictModel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C26B75B51A93BA23003A7431 /* Dict2ModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dict2ModelTest.swift; sourceTree = "<group>"; };
+		C2E25FA91A92F3B20045B7D1 /* SwiftDictModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftDictModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2E25FAD1A92F3B20045B7D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2E25FAE1A92F3B20045B7D1 /* SwiftDictModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftDictModel.h; sourceTree = "<group>"; };
+		C2E25FB41A92F3B20045B7D1 /* SwiftDictModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDictModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2E25FBA1A92F3B20045B7D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2E25FBB1A92F3B20045B7D1 /* SwiftDictModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDictModelTests.swift; sourceTree = "<group>"; };
+		C2E25FC51A92F3C70045B7D1 /* SwiftDictModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDictModel.swift; path = ../../Resources/SwiftDictModel.swift; sourceTree = "<group>"; };
+		C2E25FCA1A9300650045B7D1 /* ModelInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ModelInfo.json; sourceTree = "<group>"; };
+		C2E25FCC1A9301ED0045B7D1 /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
+		C2E25FCF1A9307BE0045B7D1 /* ModelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelInfo.swift; sourceTree = "<group>"; };
+		C2E25FD11A9308C10045B7D1 /* ModelInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelInfoTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2E25FA51A92F3B20045B7D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2E25FB11A92F3B20045B7D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2E25FB51A92F3B20045B7D1 /* SwiftDictModel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2E25F9F1A92F3B20045B7D1 = {
+			isa = PBXGroup;
+			children = (
+				C2E25FAB1A92F3B20045B7D1 /* SwiftDictModel */,
+				C2E25FB81A92F3B20045B7D1 /* SwiftDictModelTests */,
+				C2E25FAA1A92F3B20045B7D1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C2E25FAA1A92F3B20045B7D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2E25FA91A92F3B20045B7D1 /* SwiftDictModel.framework */,
+				C2E25FB41A92F3B20045B7D1 /* SwiftDictModelTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2E25FAB1A92F3B20045B7D1 /* SwiftDictModel */ = {
+			isa = PBXGroup;
+			children = (
+				C2E25FC51A92F3C70045B7D1 /* SwiftDictModel.swift */,
+				C2E25FAE1A92F3B20045B7D1 /* SwiftDictModel.h */,
+				C2E25FAC1A92F3B20045B7D1 /* Supporting Files */,
+			);
+			path = SwiftDictModel;
+			sourceTree = "<group>";
+		};
+		C2E25FAC1A92F3B20045B7D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2E25FAD1A92F3B20045B7D1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2E25FB81A92F3B20045B7D1 /* SwiftDictModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2E25FCE1A9307A60045B7D1 /* Models */,
+				C2E25FC91A9300650045B7D1 /* DataFiles */,
+				C2E25FBB1A92F3B20045B7D1 /* SwiftDictModelTests.swift */,
+				C2E25FD11A9308C10045B7D1 /* ModelInfoTests.swift */,
+				C26B75B51A93BA23003A7431 /* Dict2ModelTest.swift */,
+				C2E25FB91A92F3B20045B7D1 /* Supporting Files */,
+			);
+			path = SwiftDictModelTests;
+			sourceTree = "<group>";
+		};
+		C2E25FB91A92F3B20045B7D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2E25FBA1A92F3B20045B7D1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C2E25FC91A9300650045B7D1 /* DataFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C2E25FCC1A9301ED0045B7D1 /* Error.json */,
+				C2E25FCA1A9300650045B7D1 /* ModelInfo.json */,
+			);
+			path = DataFiles;
+			sourceTree = "<group>";
+		};
+		C2E25FCE1A9307A60045B7D1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2E25FCF1A9307BE0045B7D1 /* ModelInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C2E25FA61A92F3B20045B7D1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2E25FAF1A92F3B20045B7D1 /* SwiftDictModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C2E25FA81A92F3B20045B7D1 /* SwiftDictModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2E25FBF1A92F3B20045B7D1 /* Build configuration list for PBXNativeTarget "SwiftDictModel" */;
+			buildPhases = (
+				C2E25FA41A92F3B20045B7D1 /* Sources */,
+				C2E25FA51A92F3B20045B7D1 /* Frameworks */,
+				C2E25FA61A92F3B20045B7D1 /* Headers */,
+				C2E25FA71A92F3B20045B7D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftDictModel;
+			productName = SwiftDictModel;
+			productReference = C2E25FA91A92F3B20045B7D1 /* SwiftDictModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C2E25FB31A92F3B20045B7D1 /* SwiftDictModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2E25FC21A92F3B20045B7D1 /* Build configuration list for PBXNativeTarget "SwiftDictModelTests" */;
+			buildPhases = (
+				C2E25FB01A92F3B20045B7D1 /* Sources */,
+				C2E25FB11A92F3B20045B7D1 /* Frameworks */,
+				C2E25FB21A92F3B20045B7D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E25FB71A92F3B20045B7D1 /* PBXTargetDependency */,
+			);
+			name = SwiftDictModelTests;
+			productName = SwiftDictModelTests;
+			productReference = C2E25FB41A92F3B20045B7D1 /* SwiftDictModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2E25FA01A92F3B20045B7D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = joyios;
+				TargetAttributes = {
+					C2E25FA81A92F3B20045B7D1 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					C2E25FB31A92F3B20045B7D1 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+				};
+			};
+			buildConfigurationList = C2E25FA31A92F3B20045B7D1 /* Build configuration list for PBXProject "SwiftDictModel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C2E25F9F1A92F3B20045B7D1;
+			productRefGroup = C2E25FAA1A92F3B20045B7D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2E25FA81A92F3B20045B7D1 /* SwiftDictModel */,
+				C2E25FB31A92F3B20045B7D1 /* SwiftDictModelTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2E25FA71A92F3B20045B7D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2E25FB21A92F3B20045B7D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2E25FCD1A9301ED0045B7D1 /* Error.json in Resources */,
+				C2E25FCB1A9300650045B7D1 /* ModelInfo.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2E25FA41A92F3B20045B7D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2E25FC61A92F3C70045B7D1 /* SwiftDictModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2E25FB01A92F3B20045B7D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2E25FD01A9307BE0045B7D1 /* ModelInfo.swift in Sources */,
+				C2E25FBC1A92F3B20045B7D1 /* SwiftDictModelTests.swift in Sources */,
+				C2E25FC81A92FC920045B7D1 /* SwiftDictModel.swift in Sources */,
+				C26B75B61A93BA23003A7431 /* Dict2ModelTest.swift in Sources */,
+				C2E25FD21A9308C10045B7D1 /* ModelInfoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2E25FB71A92F3B20045B7D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2E25FA81A92F3B20045B7D1 /* SwiftDictModel */;
+			targetProxy = C2E25FB61A92F3B20045B7D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C2E25FBD1A92F3B20045B7D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C2E25FBE1A92F3B20045B7D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C2E25FC01A92F3B20045B7D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftDictModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C2E25FC11A92F3B20045B7D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SwiftDictModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C2E25FC31A92F3B20045B7D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftDictModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C2E25FC41A92F3B20045B7D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftDictModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2E25FA31A92F3B20045B7D1 /* Build configuration list for PBXProject "SwiftDictModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2E25FBD1A92F3B20045B7D1 /* Debug */,
+				C2E25FBE1A92F3B20045B7D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2E25FBF1A92F3B20045B7D1 /* Build configuration list for PBXNativeTarget "SwiftDictModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2E25FC01A92F3B20045B7D1 /* Debug */,
+				C2E25FC11A92F3B20045B7D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2E25FC21A92F3B20045B7D1 /* Build configuration list for PBXNativeTarget "SwiftDictModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2E25FC31A92F3B20045B7D1 /* Debug */,
+				C2E25FC41A92F3B20045B7D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2E25FA01A92F3B20045B7D1 /* Project object */;
+}

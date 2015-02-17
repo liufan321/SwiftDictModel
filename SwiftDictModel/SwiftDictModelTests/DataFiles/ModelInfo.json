@@ -1,0 +1,19 @@
+{
+    "str1": "mike",
+    "str2": "mary",
+    "b": true,
+    "i": 100000,
+    "i8": 8,
+    "i16": 16,
+    "i32": 32,
+    "i64": 64,
+    "f": 10.001,
+    "d": null,
+    "num": 123,
+    "other": {"modelName": "hello model"},
+    "others": [{"modelName": "hello model 111"},
+               {"modelName": "hello model 222"},
+               {"modelName": "hello model 333"},
+               {"modelName": "hello model 444"},
+               {"modelName": "hello model 555"}]
+}

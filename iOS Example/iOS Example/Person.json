@@ -1,0 +1,11 @@
+{
+    "name": "MIKE",
+    "school": "SCHOOL",
+    "bag": {
+        "bagName": "myBag",
+        "books": [
+                  {"bookName": "iPhone", "price": 19.88},
+                  {"bookName": "iPad", "price": 29.88}
+                  ]
+    }
+}
