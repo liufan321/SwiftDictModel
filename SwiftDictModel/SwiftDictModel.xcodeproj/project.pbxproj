@@ -37,7 +37,7 @@
 		C2E25FB41A92F3B20045B7D1 /* SwiftDictModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftDictModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E25FBA1A92F3B20045B7D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2E25FBB1A92F3B20045B7D1 /* SwiftDictModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDictModelTests.swift; sourceTree = "<group>"; };
-		C2E25FC51A92F3C70045B7D1 /* SwiftDictModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDictModel.swift; path = ../../Resources/SwiftDictModel.swift; sourceTree = "<group>"; };
+		C2E25FC51A92F3C70045B7D1 /* SwiftDictModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftDictModel.swift; path = ../../Sources/SwiftDictModel.swift; sourceTree = "<group>"; };
 		C2E25FCA1A9300650045B7D1 /* ModelInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ModelInfo.json; sourceTree = "<group>"; };
 		C2E25FCC1A9301ED0045B7D1 /* Error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Error.json; sourceTree = "<group>"; };
 		C2E25FCF1A9307BE0045B7D1 /* ModelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelInfo.swift; sourceTree = "<group>"; };

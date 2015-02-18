@@ -8,8 +8,8 @@
       location = "group:SwiftDictModel/SwiftDictModel.xcodeproj">
    </FileRef>
    <Group
-      location = "container:Resources"
-      name = "Resources">
+      location = "container:Sources"
+      name = "Sources">
       <FileRef
          location = "group:SwiftDictModel.swift">
       </FileRef>
