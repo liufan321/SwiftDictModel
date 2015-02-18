@@ -350,6 +350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SwiftDictModel-hghnfadzdlazxfahsjdtguxfwdcm/Build/Products/Debug-iphoneos",
@@ -364,6 +365,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/SwiftDictModel-hghnfadzdlazxfahsjdtguxfwdcm/Build/Products/Debug-iphoneos",
@@ -427,6 +429,7 @@
 				C2E33D481A93ECC900B5E200 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2E33D491A93ECC900B5E200 /* Build configuration list for PBXNativeTarget "iOS ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -435,6 +438,7 @@
 				C2E33D4B1A93ECC900B5E200 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
