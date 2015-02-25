@@ -48,7 +48,7 @@ public class DictModelManager {
         for (key, customClass) in modelInfo {
             // 如果赋值字典中存在内容
             if let value: AnyObject = dict[key] {
-                if customClass == nil && !(value === NSNull()) {
+                if customClass === NSNull() && !(value === NSNull()) {
                     obj.setValue(value, forKey: key)
                 } else {
                     let type = NSStringFromClass(value.classForCoder)
@@ -106,7 +106,7 @@ public class DictModelManager {
                 value = NSNull()
             }
             
-            if customClass == nil || value === NSNull() {
+            if customClass === NSNull() || value === NSNull() {
                 infoDict[key] = value
             } else {
                 let type = NSStringFromClass(value!.classForCoder)
@@ -140,7 +140,7 @@ public class DictModelManager {
     ///  获取完整模型信息
     ///
     ///  :param: cls 模型类
-    func fullModelInfo(cls: AnyClass) -> Dictionary<String, AnyObject?> {
+    func fullModelInfo(cls: AnyClass) -> Dictionary<String, AnyObject> {
         
         if let cache = cacheModel(cls) {
             return cache
@@ -150,7 +150,7 @@ public class DictModelManager {
         var c: AnyClass? = cls
         
         // 属性字典
-        var infoDict = Dictionary<String, AnyObject?>()
+        var infoDict = Dictionary<String, AnyObject>()
         do {
             // 追加属性字典
             infoDict.merge(modelInfo(c!))
@@ -170,7 +170,7 @@ public class DictModelManager {
     ///  获取模型信息
     ///
     ///  :param: cls 模型类
-    func modelInfo(cls: AnyClass) -> Dictionary<String, AnyObject?> {
+    func modelInfo(cls: AnyClass) -> Dictionary<String, AnyObject> {
         
         if let cache = cacheModel(cls) {
             return cache
@@ -186,7 +186,7 @@ public class DictModelManager {
         let properties = class_copyPropertyList(cls, &count)
         
         // 属性信息字典
-        var infoDict = Dictionary<String, AnyObject?>()
+        var infoDict = Dictionary<String, AnyObject>()
         
         // 遍历属性列表
         for i in 0..<count {
@@ -197,7 +197,11 @@ public class DictModelManager {
             let name = String.fromCString(cname)
             
             // 记录自定义类信息
-            infoDict[name!] = customMappingDict?[name!]
+            if let type = customMappingDict?[name!] {
+                infoDict[name!] = type
+            } else {
+                infoDict[name!] = NSNull()
+            }
         }
         
         free(properties)
@@ -210,12 +214,12 @@ public class DictModelManager {
     ///  :param: cls 模型类
     ///
     ///  :returns: 如果存在返回模型信息字典，否则返回 nil
-    func cacheModel(cls: AnyClass) -> Dictionary<String, AnyObject?>? {
+    func cacheModel(cls: AnyClass) -> Dictionary<String, AnyObject>? {
         return modelCahce["\(cls)"]
     }
     
     /// 模型缓冲池
-    var modelCahce = Dictionary<String, Dictionary<String, AnyObject?>>()
+    var modelCahce = Dictionary<String, Dictionary<String, AnyObject>>()
 }
 
 extension Dictionary {
