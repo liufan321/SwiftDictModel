@@ -8,221 +8,259 @@
 
 import Foundation
 
-/// 私有全局变量，单例实例
-private let sharedInstance = DictModelManager()
+/**
+    字典转模型协议
 
-///  字典转模型协议
+    提示：
+    * 自定义类映射字典中需要包含类的命名空间
+
+        示例代码：
+        return ["info": "\(Info.self)", "other": "\(Info.self)", "demo": "\(Info.self)"];
+
+    * 目前存在的问题：
+
+        - 由于 customClassMapping 是一个静态函数，子类模型中不能重写协议函数
+        - 如果子类中也包含自定义对象，需要在父类的 customClassMapping 一并指定
+
+    * 不希望参与字典转模型的属性可以定义为 private 的
+*/
 @objc public protocol DictModelProtocol {
-    ///  自定义类映射表
+    ///  自定义类映射字典
     ///
-    ///  :returns: 属性和自定义类的对应字典
-    ///  :mark:    返回定义为 Self 是因为这个接口本身是没有包含类信息的
-    ///            我们并不知道哪个类会实现这个接口，所以我们使用 Self 来指代将要实现这个接口的类
-    static func customClassMapping() -> (Dictionary<String, String>?)
+    ///  :returns: 可选映射字典
+    static func customClassMapping() -> [String: String]?
 }
 
 ///  字典转模型管理器
 public class DictModelManager {
     
-    /// 单例类变量 - 全局的访问入口
+    private static let instance = DictModelManager()
+    /// 全局统一访问入口
     public class var sharedManager: DictModelManager {
-        return sharedInstance
+        return instance
     }
     
-    // MARK: - 公共函数
-    ///  字典转模型方法
+    ///  字典转模型
     ///
     ///  :param: dict 数据字典
     ///  :param: cls  模型类
     ///
-    ///  :returns: 实例化后的模型对象
-    public func objectWithDictionary(dict: NSDictionary, cls: AnyClass!) -> AnyObject? {
+    ///  :returns: 模型对象
+    public func objectWithDictionary(dict: NSDictionary, cls: AnyClass) -> AnyObject? {
         
-        // 提取模型字典
-        let modelInfo = fullModelInfo(cls)
+        // 1. 模型信息
+        let infoDict = fullModelInfo(cls)
         
-        // 实例化对象
-        var obj: AnyObject = cls.alloc()
+        // 2. 实例化对象
+        let obj: AnyObject = cls.alloc()
         
-        // 遍历模型字典
-        for (key, customClass) in modelInfo {
-            // 如果赋值字典中存在内容
-            if let value: AnyObject = dict[key] {
-                if customClass === NSNull() && !(value === NSNull()) {
-                    obj.setValue(value, forKey: key)
-                } else {
-                    let type = NSStringFromClass(value.classForCoder)
-                    if type == "NSDictionary" || type == "NSMutableDictionary" {
-                        if let subObj: AnyObject = self.objectWithDictionary(value as! NSDictionary, cls: NSClassFromString(customClass as! String)) {
-                            obj.setValue(subObj, forKey: key)
+        autoreleasepool {
+            // 3. 遍历模型字典
+            for (k, v) in infoDict {
+                if let value: AnyObject = dict[k] {
+                    if v.isEmpty {
+                        if !(value === NSNull()) {
+                            obj.setValue(value, forKey: k)
                         }
-                    } else if type == "NSArray" || type == "NSMutableArray" {
-                        if let subObjs = self.objectsWithArray(value as! NSArray, cls: NSClassFromString(customClass as! String)) {
-                            obj.setValue(subObjs, forKeyPath: key)
+                    } else {
+                        let type = "\(value.classForCoder)"
+                        
+                        if type == "NSDictionary" {
+                            if let subObj: AnyObject = objectWithDictionary(value as! NSDictionary, cls: NSClassFromString(v)) {
+                                obj.setValue(subObj, forKey: k)
+                            }
+                        } else if type == "NSArray" {
+                            if let subObj: AnyObject = objectsWithArray(value as! NSArray, cls: NSClassFromString(v)) {
+                                obj.setValue(subObj, forKey: k)
+                            }
                         }
                     }
                 }
             }
         }
-        
         return obj
     }
     
-    ///  使用数组实例化模型对象数组
+    ///  创建自定义对象数组
     ///
-    ///  :param: array 数组
-    ///  :param: cls   模型类
+    ///  :param: NSArray 字典数组
+    ///  :param: cls     模型类
     ///
-    ///  :returns: 实例化的模型数组
-    public func objectsWithArray(array: NSArray, cls: AnyClass!) -> NSArray? {
+    ///  :returns: 模型数组
+    public func objectsWithArray(array: NSArray, cls: AnyClass) -> NSArray? {
+        
         var list = [AnyObject]()
         
-        // TODO: - 目前默认数组中存储的就是字典
-        for dict in array {
-            if let obj: AnyObject = objectWithDictionary(dict as! NSDictionary, cls: cls) {
-                list.append(obj)
-            }
-        }
-        
-        return list
-    }
-    
-    ///  返回指定对象的字典信息
-    ///
-    ///  :param: obj 模型对象
-    ///
-    ///  :returns: 字典信息
-    public func objectDictionary(obj: AnyObject) -> Dictionary<NSString, AnyObject> {
-        
-        // 提取模型字典
-        let modelInfo = fullModelInfo(obj.classForCoder)
-        
-        var infoDict = Dictionary<NSString, AnyObject>()
-        
-        for (key, customClass) in modelInfo {
-            
-            var value: AnyObject? = obj.valueForKey(key)
-            if value == nil {
-                value = NSNull()
-            }
-            
-            if customClass === NSNull() || value === NSNull() {
-                infoDict[key] = value
-            } else {
-                let type = NSStringFromClass(value!.classForCoder)
-                if type == "NSArray" || type == "NSMutableArray" {
-                    infoDict[key] = objectArray(value as! [AnyObject])
-                } else {
-                    infoDict[key] = objectDictionary(value!)
+        autoreleasepool { () -> () in
+            for value in array {
+                let type = "\(value.classForCoder)"
+                
+                if type == "NSDictionary" {
+                    if let subObj: AnyObject = objectWithDictionary(value as! NSDictionary, cls: cls) {
+                        list.append(subObj)
+                    }
+                } else if type == "NSArray" {
+                    if let subObj: AnyObject = objectsWithArray(value as! NSArray, cls: cls) {
+                        list.append(subObj)
+                    }
                 }
             }
         }
         
-        return infoDict
+        if list.count > 0 {
+            return list
+        } else {
+            return nil
+        }
     }
-
-    ///  返回指定对象数组的字典数组信息
+    
+    ///  模型转字典
     ///
-    ///  :param: objs 模型对象数组
+    ///  :param: obj 模型对象
     ///
-    ///  :returns: 字典数组信息
-    public func objectArray(objs: [AnyObject]) -> [AnyObject] {
-        var array = [AnyObject]()
+    ///  :returns: 字典信息
+    public func objectDictionary(obj: AnyObject) -> [String: AnyObject]? {
+        // 1. 取出对象模型字典
+        let infoDict = fullModelInfo(obj.classForCoder)
         
-        for obj in objs {
-            array.append(objectDictionary(obj))
+        var result = [String: AnyObject]()
+        // 2. 遍历字典
+        for (k, v) in infoDict {
+            var value: AnyObject? = obj.valueForKey(k)
+            if value == nil {
+                value = NSNull()
+            }
+            
+            if v.isEmpty || value === NSNull() {
+                result[k] = value
+            } else {
+                let type = "\(value!.classForCoder)"
+                
+                var subValue: AnyObject?
+                if type == "NSArray" {
+                    subValue = objectArray(value! as! [AnyObject])
+                } else {
+                    subValue = objectDictionary(value!)
+                }
+                if subValue == nil {
+                    subValue = NSNull()
+                }
+                result[k] = subValue
+            }
         }
         
-        return array
+        if result.count > 0 {
+            return result
+        } else {
+            return nil
+        }
+    }
+    
+    ///  模型数组转字典数组
+    ///
+    ///  :param: array 模型数组
+    ///
+    ///  :returns: 字典数组
+    public func objectArray(array: [AnyObject]) -> [AnyObject]? {
+        
+        var result = [AnyObject]()
+        
+        for value in array {
+            let type = "\(value.classForCoder)"
+            
+            var subValue: AnyObject?
+            if type == "NSArray" {
+                subValue = objectArray(value as! [AnyObject])
+            } else {
+                subValue = objectDictionary(value)
+            }
+            if subValue != nil {
+                result.append(subValue!)
+            }
+        }
+        
+        if result.count > 0 {
+            return result
+        } else {
+            return nil
+        }
     }
     
     // MARK: - 私有函数
-    ///  获取完整模型信息
+    ///  加载完整类信息
     ///
     ///  :param: cls 模型类
-    func fullModelInfo(cls: AnyClass) -> Dictionary<String, AnyObject> {
+    ///
+    ///  :returns: 模型类完整信息
+    func fullModelInfo(cls: AnyClass) -> [String: String] {
         
-        if let cache = cacheModel(cls) {
+        // 检测缓冲池
+        if let cache = modelCache["\(cls)"] {
             return cache
         }
         
-        // 遍历模型类的继承关系
-        var c: AnyClass? = cls
+        var currentCls: AnyClass = cls
         
-        // 属性字典
-        var infoDict = Dictionary<String, AnyObject>()
-        do {
-            // 追加属性字典
-            infoDict.merge(modelInfo(c!))
-            
-            c = c!.superclass()
-            if NSStringFromClass(c).hasPrefix("NS") {
-                break
-            }
-        } while c != nil
+        var infoDict = [String: String]()
+        while let parent: AnyClass = currentCls.superclass() {
+            infoDict.merge(modelInfo(currentCls))
+            currentCls = parent
+        }
         
-        // 将属性字典保存至模型缓冲池
-        modelCahce["\(cls)"] = infoDict
+        // 写入缓冲池
+        modelCache["\(cls)"] = infoDict
         
-        return cacheModel(cls)!
+        return infoDict
     }
     
-    ///  获取模型信息
+    ///  加载类信息
     ///
     ///  :param: cls 模型类
-    func modelInfo(cls: AnyClass) -> Dictionary<String, AnyObject> {
-        
-        if let cache = cacheModel(cls) {
+    ///
+    ///  :returns: 模型类信息
+    func modelInfo(cls: AnyClass) -> [String: String] {
+        // 检测缓冲池
+        if let cache = modelCache["\(cls)"] {
             return cache
         }
         
-        // 提取自定义属性类字典
-        var customMappingDict: Dictionary<String, String>?
-        if cls.respondsToSelector("customClassMapping") {
-            customMappingDict = cls.customClassMapping()
-        }
-        
+        // 拷贝属性列表
         var count: UInt32 = 0
         let properties = class_copyPropertyList(cls, &count)
         
-        // 属性信息字典
-        var infoDict = Dictionary<String, AnyObject>()
+        // 检查类是否实现了协议
+        var mappingDict: [String: String]?
+        if cls.respondsToSelector("customClassMapping") {
+            mappingDict = cls.customClassMapping()
+        }
         
-        // 遍历属性列表
+        var infoDict = [String: String]()
         for i in 0..<count {
             let property = properties[Int(i)]
             
             // 属性名称
             let cname = property_getName(property)
-            let name = String.fromCString(cname)
+            let name = String.fromCString(cname)!
             
-            // 记录自定义类信息
-            if let type = customMappingDict?[name!] {
-                infoDict[name!] = type
-            } else {
-                infoDict[name!] = NSNull()
-            }
+            let type = mappingDict?[name] ?? ""
+            
+            infoDict[name] = type
         }
         
         free(properties)
         
+        // 写入缓冲池
+        modelCache["\(cls)"] = infoDict
+        
         return infoDict
     }
     
-    ///  返回模型缓冲池中的模型字典
-    ///
-    ///  :param: cls 模型类
-    ///
-    ///  :returns: 如果存在返回模型信息字典，否则返回 nil
-    func cacheModel(cls: AnyClass) -> Dictionary<String, AnyObject>? {
-        return modelCahce["\(cls)"]
-    }
-    
-    /// 模型缓冲池
-    var modelCahce = Dictionary<String, Dictionary<String, AnyObject>>()
+    /// 模型缓冲，[类名: 模型信息字典]
+    var modelCache = [String: [String: String]]()
 }
 
 extension Dictionary {
+    ///  将字典合并到当前字典
     mutating func merge<K, V>(dict: [K: V]) {
         for (k, v) in dict {
             self.updateValue(v as! Value, forKey: k as! Key)

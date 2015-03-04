@@ -58,7 +58,7 @@ class Dict2ModelTest: XCTestCase {
         var json: NSDictionary = serializationJSON("ModelInfo.json")! as! NSDictionary
         
         if let modelInfo: ModelInfo = modelManager.objectWithDictionary(json, cls: ModelInfo.self) as? ModelInfo {
-            var dict = modelManager.objectDictionary(modelInfo) as NSDictionary
+            var dict = modelManager.objectDictionary(modelInfo)
             printLog(dict)
         }
     }

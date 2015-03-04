@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         
         performenceRunFunction(10000) {
             autoreleasepool({ () -> () in
-                var stu: Student? = manager.objectWithDictionary(json, cls: Student.self) as? Student
+                var stu: Student? = self.manager.objectWithDictionary(json, cls: Student.self) as? Student
             })
         }
     }
