@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "SwiftDictModel"
-  s.version      = "0.1.3"
+  s.version      = "0.1.4"
   s.summary      = "JSON and Model Conversion Tool in Swift"
   s.homepage     = "https://github.com/liufan321/SwiftDictModel"
   s.license      = "MIT"
